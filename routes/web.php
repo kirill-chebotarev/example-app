@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +18,11 @@ use Illuminate\Http\Request;
 */
 
 
-Route::get('/home', function () {
-    return 'Welcome to our page';
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name( 'home');
 
-Route::get('/info', function () {
-    return 'Some info about project';
-})->name('info');
+Route::get('/categories', [CategoryController::class, 'showCategoryList'])->name('categories');
+Route::get('/categories/{categoryId}', [CategoryController::class, 'showNewsList'])->name('category');
 
-Route::get('/news', function () {
-    return 'Show news';
-})->name('news');
+Route::get('/categories/news/{newsId}', [NewsController::class, 'show'])->name('show_news');
+Route::get('/categories/news/news/create', [NewsController::class, 'create'])->name('create_news');
 

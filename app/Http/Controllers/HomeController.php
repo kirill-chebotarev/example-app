@@ -6,23 +6,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('home');
+        echo 'Добро пожаловать на наш сайт';
+        echo "<p>Авторизоваться</p>";
+
+        echo "<p><a href=" . route('categories') .">Просмотр новостей</a></p>";
+        echo "<p><a href=" . route('create_news') .">Добавить новость</a></p>";
     }
 }
